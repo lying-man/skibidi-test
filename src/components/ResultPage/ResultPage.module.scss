@@ -1,0 +1,83 @@
+@import "../../styles/utils.scss";
+
+.wrapper {
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+    overflow-x: hidden;
+
+    .info {
+        margin-bottom: 25px;
+
+        .wrapperImg {
+            margin: 0 auto;
+            margin-bottom: 16px;
+            max-width: 300px;
+            width: 100%;
+            height: 300px;
+            position: relative;
+
+            img {
+                @include adaptivImg();
+                object-fit: contain;
+            }
+        }
+
+        .title {
+            background-color: #F1C40F;
+            border-radius: 5px;
+            padding: 5px;
+            font-size: 30px;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            @include btn();
+        }
+
+    }
+
+    .content {
+
+        .text {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .line {
+            width: 180px;
+            height: 3px;
+            border-radius: 9999px;
+            background-color: #ffffff9e;
+            margin: 20px auto;
+        }
+
+        .list {
+            padding-bottom: 30px;
+
+            .item {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                padding: 4px;
+                border-radius: 3px;
+                font-size: 16px;
+
+                span:last-child {
+                    color: lighten($textColor, 14);
+                }
+
+                &:not(:last-child) {
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+}
