@@ -37,11 +37,13 @@ const TestPage: FC<ITestProps> = ({ addResultList, toggleLocation }) => {
         if (currentQuestionId === 11) {
             addResultList([...resultList, { answerId: answerId, questionId: currentQuestion.id }]);
             toggleLocation("result");
+            setLoaderVisibility(true);
             return;
         }
         
         setResultList([ ...resultList, { answerId: answerId, questionId: currentQuestion.id } ]);
         setCurrentQuestionId(currentQuestionId + 1);
+        setLoaderVisibility(true);
 
     }
  
