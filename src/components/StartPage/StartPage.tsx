@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import cl from "./StartPage.module.scss";
 import StartImage from "../../assets/start-image.png";
 import ThumbImageOne from "../../assets/preview1.png";
@@ -20,6 +20,8 @@ const animateImgVariants = {
 }
 
 const StartPage: FC<IStartPageProps> = ({ setLoader }) => {
+
+    const [amountImageLoaded, setAmountImageLoaded] = useState<number>(0);
 
     interface IImgData {
         src: string,
@@ -74,10 +76,11 @@ const StartPage: FC<IStartPageProps> = ({ setLoader }) => {
                         src={el.src}
                         alt={el.altText}
                         className={el.classname}
-                        initial={el.animation.start}
-                        animate={el.animation.enter}
+                        initial={false}
+                        animate={ amountImageLoaded === 3 ? el.animation.enter : el.animation.start }
                         variants={animateImgVariants}
                         custom={index}
+                        onLoad={() => setAmountImageLoaded(state => state + 1)}
                     />
                 ))
             }

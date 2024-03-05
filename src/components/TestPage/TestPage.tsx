@@ -5,6 +5,7 @@ import { questionsData } from "../../data/data";
 import { Dispatcher, IAnswerItem, TypeLocation } from "../Types/types"; 
 import classNames from "classnames";
 import { motion, AnimatePresence } from "framer-motion";
+import ImageLoader from "../ImageLoader/ImageLoader";
 
 interface ITestProps {
     addResultList: Dispatcher<IAnswerItem[]>,
@@ -17,6 +18,7 @@ const TestPage: FC<ITestProps> = ({ addResultList, toggleLocation }) => {
     const [answerId, setAnswerId] = useState<number>(0);
     const [resultList, setResultList] = useState<IAnswerItem[]>([]);
     const [isVisibleCurrentAnswer, setIsVisibleCurrentAnswer] = useState<boolean>(true);
+    const [loaderVisibility, setLoaderVisibility] = useState<boolean>(true);
 
     useEffect(() => {
         if (!answerId) {
@@ -72,7 +74,13 @@ const TestPage: FC<ITestProps> = ({ addResultList, toggleLocation }) => {
                             >
                                 <div>
                                     <div className={cl.image}>
-                                        <img src={ currentQuestion.imgSrc } alt="image" />
+                                        <img 
+                                            style={{ display: loaderVisibility ? "none" : "block" }} 
+                                            src={ currentQuestion.imgSrc } 
+                                            onLoad={() => setLoaderVisibility(false)}
+                                            alt="image" 
+                                        />
+                                        { loaderVisibility && <ImageLoader /> }
                                     </div>
                                     <h2 className={cl.title}>{ currentQuestion.title }</h2>
             

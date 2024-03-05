@@ -5,6 +5,7 @@ import { questionsData } from "../../data/data";
 import { defineCharacter } from "../../utils/defineCharacter";
 import { motion } from "framer-motion";
 import Confetti from "react-confetti";
+import ImageLoader from "../ImageLoader/ImageLoader";
 
 interface IResultPageProps {
     toggleLocation: (locationTo: TypeLocation) => void,
@@ -14,6 +15,7 @@ interface IResultPageProps {
 const ResultPage: FC<IResultPageProps> = ({ resultList, toggleLocation }) => {
 
     const [visible, setVisible] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => { setVisible(true) }, []);
 
@@ -38,14 +40,22 @@ const ResultPage: FC<IResultPageProps> = ({ resultList, toggleLocation }) => {
     return (
         <div className={cl.wrapper}>
             <div className={cl.info}>
-                <motion.div 
-                    className={cl.wrapperImg} 
-                    animate={{ scale: 1, opacity: 1 }} 
-                    initial={{ scale: 0, opacity: 0 }}
-                    transition={{ delay: 0.1 }}
-                >
-                    <img src={ characterData.img } alt="картинка" />
-                </motion.div>
+                <div className={cl.loaderBox}>
+                    <motion.div 
+                        className={cl.wrapperImg} 
+                        animate={ isLoading ? { scale: 0, opacity: 0 } : { scale: 1, opacity: 1 } } 
+                        initial={false}
+                        transition={{ delay: 0.1 }}
+                    >
+                        <img 
+                            style={{ display: isLoading ? "none" : "block" }} 
+                            src={ characterData.img } 
+                            onLoad={() => setIsLoading(false)}
+                            alt="картинка" 
+                        />
+                    </motion.div>
+                    { isLoading && <ImageLoader /> }
+                </div>
                 <motion.h2 
                     className={cl.title} 
                     animate={{ scale: 1, opacity: 1 }} 

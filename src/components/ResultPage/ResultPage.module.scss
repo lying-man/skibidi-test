@@ -9,17 +9,22 @@
     .info {
         margin-bottom: 25px;
 
-        .wrapperImg {
-            margin: 0 auto;
-            margin-bottom: 16px;
-            max-width: 300px;
-            width: 100%;
-            height: 300px;
+        .loaderBox {
             position: relative;
+            min-height: 100px;
 
-            img {
-                @include adaptivImg();
-                object-fit: contain;
+            .wrapperImg {
+                margin: 0 auto;
+                margin-bottom: 16px;
+                max-width: 300px;
+                width: 100%;
+                height: 300px;
+                position: relative;
+    
+                img {
+                    @include adaptivImg();
+                    object-fit: contain;
+                }
             }
         }
 

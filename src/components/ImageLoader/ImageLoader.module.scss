@@ -1,0 +1,15 @@
+@import "../../styles/utils.scss";
+
+.box {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    @include center();
+
+    .loader {
+        width: 30px;
+        height: 30px;
+    }
+}
