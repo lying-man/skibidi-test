@@ -40,22 +40,18 @@ const ResultPage: FC<IResultPageProps> = ({ resultList, toggleLocation }) => {
     return (
         <div className={cl.wrapper}>
             <div className={cl.info}>
-                <div className={cl.loaderBox}>
-                    <motion.div 
-                        className={cl.wrapperImg} 
-                        animate={ isLoading ? { scale: 0, opacity: 0 } : { scale: 1, opacity: 1 } } 
-                        initial={false}
-                        transition={{ delay: 0.1 }}
-                    >
-                        <img 
-                            style={{ display: isLoading ? "none" : "block" }} 
-                            src={ characterData.img } 
-                            onLoad={() => setIsLoading(false)}
-                            alt="картинка" 
-                        />
-                    </motion.div>
-                    { isLoading && <ImageLoader /> }
-                </div>
+                <motion.div 
+                    className={cl.wrapperImg} 
+                    animate={ isLoading ? { scale: 0, opacity: 0 } : { scale: 1, opacity: 1 } } 
+                    initial={false}
+                    transition={{ delay: 0.1 }}
+                >
+                    <img 
+                        src={ characterData.img } 
+                        onLoad={() => setIsLoading(false)}
+                        alt="картинка" 
+                    />
+                </motion.div>
                 <motion.h2 
                     className={cl.title} 
                     animate={{ scale: 1, opacity: 1 }} 
