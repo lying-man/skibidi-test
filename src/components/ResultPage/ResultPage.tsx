@@ -5,7 +5,6 @@ import { questionsData } from "../../data/data";
 import { defineCharacter } from "../../utils/defineCharacter";
 import { motion } from "framer-motion";
 import Confetti from "react-confetti";
-import ImageLoader from "../ImageLoader/ImageLoader";
 
 interface IResultPageProps {
     toggleLocation: (locationTo: TypeLocation) => void,
